@@ -5,14 +5,6 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
-// Подключаем базу данных
-include 'include/functions.php';
-include 'include/db.php';
-
-// Заголовок страницы
-include 'template/header.php';
-include 'template/menu.php';
-
 $action = 'post_list';
 
 if (isset($_GET['action'])) {
@@ -20,6 +12,14 @@ if (isset($_GET['action'])) {
 }
 
 $actionFile = "actions/$action.php";
+
+// Подключаем базу данных
+include 'include/functions.php';
+include 'include/db.php';
+
+// Заголовок страницы
+include 'template/header.php';
+include 'template/menu.php';
 
 if (file_exists($actionFile)) {
     $actionDir = dirname($actionFile);

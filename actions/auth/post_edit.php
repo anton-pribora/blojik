@@ -9,10 +9,16 @@ include 'post_load.php';
 
 <ul class="list-inline mt-3">
   <li class="list-inline-item">
-    <a href="?action=auth/post_admin">Список постов</a>
+    <a href="?action=auth/post_admin">
+      <i class="fa fa-list" aria-hidden="true"></i>
+      Список постов
+    </a>
   </li>
   <li class="list-inline-item">
-    <a href="?action=auth/post_view&post_id=<?php echo $postId?>">Просмотр</a>
+    <a href="?action=auth/post_view&post_id=<?php echo intval($postId)?>">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      Просмотр
+    </a>
   </li>
 </ul>
 

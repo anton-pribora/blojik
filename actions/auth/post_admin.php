@@ -1,14 +1,16 @@
 <?php
 
 // Админко для постов
-
 $res = my_query('SELECT * FROM `posts` ORDER BY `creation_time` DESC');
 $posts = $res->fetchAll();
 
 ?>
 <ul class="list-inline mt-3">
   <li class="list-inline-item">
-    <a href="?action=auth/post_add">Добавить пост</a>
+    <a href="?action=auth/post_add">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Добавить пост
+    </a>
   </li>
 </ul>
 

@@ -10,12 +10,19 @@ include 'post_load.php';
 
 <ul class="list-inline mt-3">
   <li class="list-inline-item">
-    <a href="?action=auth/post_admin">Список постов</a>
+    <a href="?action=auth/post_admin">
+      <i class="fa fa-list" aria-hidden="true"></i>
+      Список постов
+    </a>
   </li>
   <li class="list-inline-item">
-    <a href="?action=auth/post_edit&post_id=<?php echo intval($postId)?>">Редактировать</a>
+    <a href="?action=auth/post_edit&post_id=<?php echo intval($postId)?>">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Редактировать
+    </a>
   </li>
   <li class="list-inline-item">
+    <i class="fa fa-trash-o" aria-hidden="true"></i>
     <a class="text-danger" href="?action=auth/post_drop&post_id=<?php echo intval($postId)?>">Удалить</a>
   </li>
 </ul>
