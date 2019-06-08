@@ -28,7 +28,7 @@ if ($_POST) {
 ?>
 <div class="alert alert-success" role="alert">
   Пост успешно добавлен!
-  <p><a href="?action=auth/post_view&post_id=<?php echo $postId;?>">Перейти в новый пост</a></p>
+  <p><a href="?action=auth/post_view&post_id=<?php echo intval($postId);?>">Перейти в новый пост</a></p>
 </div>
 <?php
     return;

@@ -25,7 +25,7 @@ if ($_POST) {
         exit;
     } else if ($action === 'cancel') {
         // Вернуться назад
-        header('Location: /?action=auth/post_view&post_id=' . $postId);
+        header('Location: /?action=auth/post_view&post_id=' . intval($postId));
         exit;
     }
 }
@@ -39,7 +39,7 @@ if ($_POST) {
     <a href="?action=auth/post_admin">Список постов</a>
   </li>
   <li class="list-inline-item">
-    <a href="?action=auth/post_view&post_id=<?php echo $postId?>">Просмотр</a>
+    <a href="?action=auth/post_view&post_id=<?php echo intval($postId)?>">Просмотр</a>
   </li>
 </ul>
 

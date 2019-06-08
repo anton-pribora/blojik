@@ -29,14 +29,14 @@ $posts = $res->fetchAll();
   <?php foreach($posts as $post) {?>
     <tr>
       <td>
-        <a href="?action=auth/post_view&post_id=<?php echo $post['id'];?>">
-          <?php echo $post['name'] ?: '(без имени)';?>
+        <a href="?action=auth/post_view&post_id=<?php echo intval($post['id']);?>">
+          <?php echo htmlescape($post['name']) ?: '(без имени)';?>
         </a>
       </td>
-      <td><?php echo $post['text'];?></td>
-      <td><?php echo $post['image'];?></td>
-      <td><?php echo $post['tags'];?></td>
-      <td><?php echo $post['creation_time'];?></td>
+      <td><?php echo htmlescape($post['text'], true);?></td>
+      <td><?php echo htmlescape($post['image']);?></td>
+      <td><?php echo htmlescape($post['tags']);?></td>
+      <td><?php echo htmlescape($post['creation_time']);?></td>
     </tr>
   <?php }?>
   </tbody>
