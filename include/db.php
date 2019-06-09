@@ -29,6 +29,11 @@ function my_query($sql, $params = [])
     }
 }
 
+function my_query_quote($str)
+{
+    global $dbh;
+    return $dbh->quote($str);
+}
 
 function my_last_insert_id()
 {

@@ -1,8 +1,29 @@
 <?php
 
 // Админко для постов
-$res = my_query('SELECT * FROM `posts` ORDER BY `creation_time` DESC');
+// Параметры для поиска
+$tag        = $_GET['tag'] ?? '';
+$searchText = $_GET['s'] ?? '';
+
+$currentPage = max($_GET['p'] ?? 0, 0);
+$rowsOnPage  = $_GET['l'] ?? 20;
+
+$where = [];
+
+if ($tag) {
+    $where[] = '`tags` LIKE ' . my_query_quote("%$tag%");
+}
+
+if ($searchText) {
+    $quotedText = my_query_quote("%$searchText%");
+    $where[] = "(`name` LIKE $quotedText OR `text` LIKE $quotedText)";
+}
+
+$res = PostRepository::findMany($where, $currentPage * $rowsOnPage, $rowsOnPage);
 $posts = $res->fetchAll();
+
+$totalRows = PostRepository::$totalFound;
+$totalPages = ceil($totalRows / $rowsOnPage);
 
 ?>
 <ul class="list-inline mt-3">
@@ -14,9 +35,11 @@ $posts = $res->fetchAll();
   </li>
 </ul>
 
-<?php
+<?php include 'template/post_search_form.php';?>
+<?php include 'template/pagination.php'; ?>
 
-?>
+<p class="text-muted">Всего записей: <?php echo $totalRows;?></p>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -43,3 +66,7 @@ $posts = $res->fetchAll();
   <?php }?>
   </tbody>
 </table>
+<?php
+
+include 'template/pagination.php';
+

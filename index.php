@@ -13,7 +13,8 @@ if (isset($_GET['action'])) {
 
 $actionFile = "actions/$action.php";
 
-// Подключаем базу данных
+// Подключаем базу данных, функции, классы
+include 'classes/autoload.php';
 include 'include/functions.php';
 include 'include/db.php';
 
