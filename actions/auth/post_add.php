@@ -12,7 +12,7 @@ if ($_POST) {
     $tmpFile = $_FILES['image']['tmp_name'] ?? '';
     
     if ($tmpFile) {
-        $newFilePath = 'uploads/' . uniqid() . '_' . $_FILES['image']['name'];
+        $newFilePath = 'uploads/' . uniqid() . '_' . basename($_FILES['image']['name']);
         rename($tmpFile, $newFilePath);
     }
     
@@ -28,7 +28,7 @@ if ($_POST) {
 ?>
 <div class="alert alert-success" role="alert">
   Пост успешно добавлен!
-  <p><a href="?action=auth/post_view&post_id=<?php echo intval($postId);?>">Перейти в новый пост</a></p>
+  <p><a href="<?php echo site_link('auth/post_view', ['post_id' => intval($postId)]);?>">Перейти в новый пост</a></p>
 </div>
 <?php
     return;

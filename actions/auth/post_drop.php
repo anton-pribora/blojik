@@ -21,11 +21,11 @@ if ($_POST) {
             $postId
         ]);
         
-        header('Location: /?action=auth/post_admin');
+        header('Location: ' . site_link('auth/post_admin'));
         exit;
     } else if ($action === 'cancel') {
         // Вернуться назад
-        header('Location: /?action=auth/post_view&post_id=' . intval($postId));
+        header('Location: ' . site_link('auth/post_view', ['post_id' => intval($postId)]));
         exit;
     }
 }
@@ -36,10 +36,10 @@ if ($_POST) {
 
 <ul class="list-inline mt-3">
   <li class="list-inline-item">
-    <a href="?action=auth/post_admin">Список постов</a>
+    <a href="<?php echo site_link('auth/post_admin');?>">Список постов</a>
   </li>
   <li class="list-inline-item">
-    <a href="?action=auth/post_view&post_id=<?php echo intval($postId)?>">Просмотр</a>
+    <a href="<?php echo site_link('auth/post_view', ['post_id' => intval($postId)]);?>">Просмотр</a>
   </li>
 </ul>
 

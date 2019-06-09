@@ -3,15 +3,15 @@
 $userId = $_SESSION['id'] ?? null;
 
 $menu = [
-    ['active' => $action == 'post_list', 'text' => '<a class="nav-link" href="/?action=post_list">Список постов</a>'],
+    ['active' => $action == 'post_list', 'text' => '<a class="nav-link" href="' . site_link('post_list') . '">Список постов</a>'],
 ];
 
 if ($userId) {
-    $menu[] = ['active' => preg_match('~^auth/post_~', $action), 'text' => '<a class="nav-link" href="/?action=auth/post_admin"><i class="fa fa-cogs" aria-hidden="true"></i> Управление постами</a>'];
-    $menu[] = ['active' => $action == 'logout', 'text' => '<a class="nav-link" href="/?action=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>'];
+    $menu[] = ['active' => preg_match('~^auth/post_~', $action), 'text' => '<a class="nav-link" href="' . site_link('auth/post_admin') . '"><i class="fa fa-cogs" aria-hidden="true"></i> Управление постами</a>'];
+    $menu[] = ['active' => $action == 'logout', 'text' => '<a class="nav-link" href="' . site_link('logout') . '"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>'];
 } else {
-    $menu[] = ['active' => $action == 'register', 'text' => '<a class="nav-link" href="/?action=register"><i class="fa fa-envelope-o" aria-hidden="true"></i> Зарегистрироваться</a>'];
-    $menu[] = ['active' => $action == 'login', 'text' => '<a class="nav-link" href="/?action=login"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>'];
+    $menu[] = ['active' => $action == 'register', 'text' => '<a class="nav-link" href="' . site_link('register') . '"><i class="fa fa-envelope-o" aria-hidden="true"></i> Зарегистрироваться</a>'];
+    $menu[] = ['active' => $action == 'login', 'text' => '<a class="nav-link" href="' . site_link('login') . '"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>'];
 }
 
 ?>

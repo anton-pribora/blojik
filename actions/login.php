@@ -14,7 +14,7 @@ if ($email && $password) {
     
     if ($row) {
         $_SESSION['id'] = $row['id'];
-        header('Location: /index.php');
+        header('Location: /');
         exit;
     } else {
         // Пользователь не найден

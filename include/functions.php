@@ -7,3 +7,11 @@ function htmlescape($html, $nl2br = false) {
 function rel_link(array $params = []) {
     return '?' . http_build_query($params + $_GET);
 }
+
+function site_link($action, array $params = []) {
+    if ($params) {
+        return "/" . trim($action, '/') . '?' . http_build_query($params);
+    }
+
+    return "/" . trim($action, '/');
+}

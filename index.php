@@ -5,11 +5,7 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
-$action = 'post_list';
-
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-}
+$action = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') ?: 'post_list';
 
 $actionFile = "actions/$action.php";
 

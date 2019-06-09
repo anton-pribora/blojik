@@ -9,13 +9,13 @@ include 'post_load.php';
 
 <ul class="list-inline mt-3">
   <li class="list-inline-item">
-    <a href="?action=auth/post_admin">
+    <a href="<?php echo site_link('auth/post_admin');?>">
       <i class="fa fa-list" aria-hidden="true"></i>
       Список постов
     </a>
   </li>
   <li class="list-inline-item">
-    <a href="?action=auth/post_view&post_id=<?php echo intval($postId)?>">
+    <a href="<?php echo site_link('auth/post_view', ['post_id' => intval($postId)]);?>">
       <i class="fa fa-search" aria-hidden="true"></i>
       Просмотр
     </a>
@@ -38,7 +38,7 @@ if ($_POST) {
             unlink($postFilePath);
         }
     
-        $postFilePath = 'uploads/' . uniqid() . '_' . $_FILES['image']['name'];
+        $postFilePath = 'uploads/' . uniqid() . '_' . basename($_FILES['image']['name']);
         rename($tmpFile, $postFilePath);
     }
 

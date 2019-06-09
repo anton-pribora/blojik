@@ -54,7 +54,7 @@ $totalPages = ceil($totalRows / $rowsOnPage);
   <?php foreach($posts as $post) {?>
     <tr>
       <td>
-        <a href="?action=auth/post_view&post_id=<?php echo intval($post['id']);?>">
+        <a href="<?php echo site_link('auth/post_view', ['post_id' => intval($post['id'])]);?>">
           <?php echo htmlescape($post['name']) ?: '(без имени)';?>
         </a>
       </td>
